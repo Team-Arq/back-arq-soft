@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
 const middleware = require('./middleware');
-const apiUsersRouter = require('./api/userController');
+const apiUsersController = require('./api/userController');
 
-//router.use('/appointment, middleware.checkToken, apiAppointmentRouter');
-router.use('/users', apiUsersRouter);
+//router.use('/appointment, middleware.checkToken, apiAppointmentController');
+router.use('/users', apiUsersController);
 
 module.exports = router;

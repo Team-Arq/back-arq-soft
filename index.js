@@ -5,8 +5,6 @@ const apiRouter = require('./0 - Distributed Services/api');
 
 const app = express();
 
-require('./3 - Infrastructure/db');
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', apiRouter);
