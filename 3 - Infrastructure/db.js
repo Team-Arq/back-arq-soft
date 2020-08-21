@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 
-const UserModel = require('./models/user');
+const UserModel = require('../2 - Domain/user');
+const AppointmentModel = require('../2 - Domain/appointment');
 
 const sequelize = new Sequelize('OPBgkKxGJI', 'OPBgkKxGJI', 'FpB7NOnR2p', {
     host: 'remotemysql.com',
@@ -8,6 +9,7 @@ const sequelize = new Sequelize('OPBgkKxGJI', 'OPBgkKxGJI', 'FpB7NOnR2p', {
 });
 
 const User = UserModel(sequelize, Sequelize);
+const Appointment = AppointmentModel(sequelize, Sequelize);
 
 sequelize.sync({ force: false})
 .then(() => {
@@ -15,5 +17,6 @@ sequelize.sync({ force: false})
 })
 
 module.exports = {
-    User
+    User,
+    Appointment
 }
