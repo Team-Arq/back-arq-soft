@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const { User } = require('../../../3 - Infrastructure/db');
+const { User } = require('../../3 - Infrastructure/db');
 const { check, validationResult } = require('express-validator');
 const moment = require('moment');
 const jwt = require('jwt-simple');

@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const apiRouter = require('./0 - Distributed Services/routes/api');
+const apiRouter = require('./0 - Distributed Services/api');
 
 const app = express();
 
