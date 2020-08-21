@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { UserApplication } = require('../../1 - Application/userApplication');
+const { loginUser, createUser } = require('../../1 - Application/userApplication');
 const { check, validationResult } = require('express-validator');
 
 router.post('/register',[
@@ -10,11 +10,11 @@ router.post('/register',[
 ], async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){ return res.status(422).json({errores: errors.array()}) }
-    await UserApplication.createUser(req, res);    
+    await createUser(req, res);    
 });
 
 router.post('/login', async (req, res) => {
-    await UserApplication.loginUser(req, res); 
+    await loginUser(req, res); 
 })
 
 module.exports = router;

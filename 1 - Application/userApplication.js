@@ -33,3 +33,5 @@ const createToken = (user) => {
     return jwt.encode(payload, 'secret-phrase');
 }
 
+module.exports = { loginUser, createUser };
+
