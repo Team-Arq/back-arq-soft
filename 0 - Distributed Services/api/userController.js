@@ -23,7 +23,7 @@ router.get('/get-user', [
     await GetUser(req, res); 
 })
 
-router.post('/edit-user', [
+router.put('/edit-user', [
     check('username', 'El nombre de usuario es obligatorio').not().isEmpty(),
     check('password', 'El password es obligatorio').not().isEmpty(),
     check('email', 'El email es obligatorio').not().isEmpty()
