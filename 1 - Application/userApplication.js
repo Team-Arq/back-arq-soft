@@ -53,7 +53,7 @@ async function EditUser(req, res) {
                     email: req.body.email
                 }
             }
-        ).then(() => { res.json({ success: user });}
+        ).then(() => { res.json({ success: req.body });}
         ).catch((error) => { throw new Error(error)});
     } else {
         res.json({ error: 'Error el usuario no existe' })
