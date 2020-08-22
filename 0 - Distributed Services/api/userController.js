@@ -18,7 +18,7 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/get-user', [
-    check('email', 'El formato del email es incorrecto').not().isEmpty()
+    check('email', 'El email es obligatorio').not().isEmpty()
 ],async (req, res) => {
     await GetUser(req, res); 
 })
@@ -26,7 +26,7 @@ router.get('/get-user', [
 router.post('/edit-user', [
     check('username', 'El nombre de usuario es obligatorio').not().isEmpty(),
     check('password', 'El password es obligatorio').not().isEmpty(),
-    check('email', 'El formato del email es incorrecto').not().isEmpty()
+    check('email', 'El email es obligatorio').not().isEmpty()
 ], async (req, res) => {
     await EditUser(req, res); 
 })
