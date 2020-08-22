@@ -41,8 +41,8 @@ async function EditUser (req, res){
         // Check if record exists in db
         if (user) {
             user.update(
-                { username: user.username, password: user.password},
-                { where: { email: user.email } }
+                { username: req.body.username, password: req.body.password},
+                { where: { email: req.body.email } }
             )
             .then(function () {
                 res.json({success: 'Usuario Actualizado'})
