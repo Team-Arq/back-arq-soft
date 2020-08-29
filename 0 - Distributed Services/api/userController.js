@@ -4,9 +4,10 @@ const { LoginUser, CreateUser, GetUser, EditUser } = require('../../1 - Applicat
 const { check, validationResult } = require('express-validator');
 
 router.post('/register',[
-    check('username', 'El nombre de usuario es obligatorio').not().isEmpty(),
-    check('password', 'El password es obligatorio').not().isEmpty(),
-    check('email', 'El formato del email es incorrecto').isEmail()
+    check('name', 'El nombre es obligatorio').not().isEmpty(),
+    check('surname', 'El apellido es obligatorio').not().isEmpty(),
+    check('email', 'El formato del email es incorrecto').not().isEmpty().isEmail(),
+    check('password', 'la contraseña es obligatorio').not().isEmpty(),
 ], async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){ return res.status(422).json({errores: errors.array()}) }
