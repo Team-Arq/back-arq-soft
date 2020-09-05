@@ -9,6 +9,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', apiRouter);
 
-app.listen(3000, () => {
-    console.log('Serve listen on port 3000');
+let port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+    console.log('Serve listen on port: ' + port);
 })
