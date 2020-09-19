@@ -7,7 +7,7 @@ const { check, validationResult } = require('express-validator');
 router.post('/CreateService',[
     check('name', 'El nombre del servicio es obligatorio').not().isEmpty(),
     check('description', 'La descripcion del servicio es obligatoria').not().isEmpty(),
-    check('type', 'Debe terner un tipo de servicio').not().isEmpty()
+    check('typeService', 'Debe terner un tipo de servicio').not().isEmpty()
 ], async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){ return res.status(422).json({errores: errors.array()}) }
@@ -20,7 +20,7 @@ router.get('/getServices', [],async (req, res) => {
 
 router.put('/editService', [
     check('description', 'La descripcion es obligatoria').not().isEmpty(),
-    check('type', 'El tipo de servicio es obligatorio').not().isEmpty(),
+    check('typeService', 'El tipo de servicio es obligatorio').not().isEmpty(),
 ], async (req, res) => {
     await EditService(req, res); 
 })

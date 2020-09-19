@@ -6,7 +6,7 @@ module.exports = (sequelize, type) => {
             autoIncrement: true
         },
         name: type.STRING,
-        type:type.STRING,
+        typeService:type.STRING,
         description: type.STRING,
         price:type.STRING
     });

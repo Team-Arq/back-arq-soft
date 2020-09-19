@@ -5,8 +5,7 @@ const jwt = require('jwt-simple');
 const { Service } = require('../3 - Infrastructure/db')
 
 async function CreateService(req, res) {
-    const service = await Service.create(req.body)
-    .catch((error) => {process.exit(1)});
+    const service = await Service.create(req.body);
     res.json(service);
 }
 
