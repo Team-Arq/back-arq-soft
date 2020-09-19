@@ -9,7 +9,6 @@ async function CreateService(req, res) {
     res.json(service);
 }
 
-
 async function GetService(req, res) {
 
     const services = await Service.findAll();
@@ -18,7 +17,8 @@ async function GetService(req, res) {
     }
     else {
         res.json({ error: 'Error al obtener Servicios' })
-    }}
+    }
+}
 
 async function EditService(req, res) {
 
@@ -44,7 +44,6 @@ async function EditService(req, res) {
     }
 }
 
-
 async function DeleteService(req, res) {
 
     const service = await Service.findOne({ where: { idService: req.body.idService } });
@@ -62,6 +61,6 @@ async function DeleteService(req, res) {
     } else {
         res.json({ error: 'El servicio no existe' })
     }
-
-    module.exports = { CreateService, GetService, EditService, DeleteService };
 }
+
+module.exports = { CreateService, GetService, EditService, DeleteService };
