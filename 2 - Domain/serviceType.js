@@ -1,12 +1,11 @@
 module.exports = (sequelize, type) => {
     return sequelize.define('service_type', {
-        id: {
+        idTypeService: {
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name: type.STRING,
-        icon: type.STRING,
+        nameTypeService: type.STRING,
         description: type.STRING,
     });
 }

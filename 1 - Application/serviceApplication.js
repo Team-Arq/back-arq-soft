@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const jwt = require('jwt-simple');
 
-const { Service } = require('../3 - Infrastructure/db')
+const { Service } = require('../3 - Infrastructure/db');
 
 async function CreateService(req, res) {
     const service = await Service.create(req.body);
