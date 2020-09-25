@@ -4,9 +4,17 @@ const jwt = require('jwt-simple');
 const { User } = require('../3 - Infrastructure/db');
 
 async function CreateUser(req, res) {
-    req.body.password = bcrypt.hashSync(req.body.password, 10);
-    const user = await User.create(req.body);
-    res.json(user);
+
+    const user = await User.findOne({ where: { email: req.body.email } });
+
+    if(user){
+        res.json({ error: 'Ya existe un usuario registrado con el email: ' + req.body.email })
+    }
+    else{
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
+        const user = await User.create(req.body);
+        res.json(user);
+    }
 }
 
 async function LoginUser(req, res) {
