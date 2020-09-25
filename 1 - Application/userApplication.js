@@ -8,12 +8,12 @@ async function CreateUser(req, res) {
     const user = await User.findOne({ where: { email: req.body.email } });
 
     if(user){
-        res.json({ error: 'Ya existe un usuario registrado con el email: ' + req.body.email })
+        res.status(401).json({ error: 'Ya existe un usuario registrado con el email: ' + req.body.email })
     }
     else{
         req.body.password = bcrypt.hashSync(req.body.password, 10);
         const user = await User.create(req.body);
-        res.json(user);
+        res.res.status(200).json(user);
     }
 }
 
@@ -23,12 +23,12 @@ async function LoginUser(req, res) {
     if (user) {
         const iguales = bcrypt.compareSync(req.body.password, user.password);
         if (iguales) {
-            res.json({ success: createToken(user) });
+            res.status(200).json({ success: createToken(user) });
         } else {
-            res.json({ error: 'Error en usuario y/o contraseña' })
+            res.status(401).json({ error: 'Error en usuario y/o contraseña' })
         }
     } else {
-        res.json({ error: 'Error en usuario y/o contraseña' })
+        res.status(401).json({ error: 'Error en usuario y/o contraseña' })
     }
 }
 
@@ -36,10 +36,10 @@ async function GetUser(req, res) {
 
     const user = await User.findOne({ where: { email: req.body.email } });
     if (user) {
-        res.json({ success: user })
+        res.status(200).json({ success: user })
     }
     else {
-        res.json({ error: 'Error el usuario no existe' })
+        res.status(404).json({ error: 'Error el usuario no existe' })
     }
 }
 
@@ -64,7 +64,7 @@ async function EditUser(req, res) {
         ).then(() => { res.json({ success: req.body });}
         ).catch((error) => { throw new Error(error)});
     } else {
-        res.json({ error: 'Error el usuario no existe' })
+        res.status(200).json({ error: 'Error el usuario no existe' })
     }
 }
 
