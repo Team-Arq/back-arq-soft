@@ -23,7 +23,7 @@ async function LoginUser(req, res) {
     if (user) {
         const iguales = bcrypt.compareSync(req.body.password, user.password);
         if (iguales) {
-            req.session.email = req.body.email;
+            req.session.email = req.body.email; 
             res.status(200).json({ success: createToken(user) });
         } else {
             res.status(401).json({ error: 'Error en usuario y/o contraseña' })

@@ -14,7 +14,7 @@ router.post('/create-service',[
         if(!errors.isEmpty()){ return res.status(422).json({errores: errors.array()}) }
         await CreateService(req, res);  
      }else{
-        res.redirect('/account/login');
+        res.status(401).json({ error: 'Sesion terminada' })
      }
 });
 
@@ -22,7 +22,7 @@ router.get('/get-services', [],async (req, res) => {
     if(req.session.email){
         await GetService(req, res); 
      }else{
-        res.redirect('/account/login');
+        res.status(401).json({ error: 'Sesion terminada' })
      }
 })
 
@@ -33,7 +33,7 @@ router.put('/edit-service', [
     if(req.session.email){
         await EditService(req, res);  
      }else{
-        res.redirect('/account/login');
+        res.status(401).json({ error: 'Sesion terminada' })
      }
 })
 
@@ -43,7 +43,7 @@ router.delete('/delete-service', [
     if(req.session.email){
         await DeleteService(req, res);
      }else{
-        res.redirect('/account/login');
+        res.status(401).json({ error: 'Sesion terminada' })
      } 
 })
 

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+
 const { LoginUser, CreateUser, GetUser, EditUser } = require('../../1 - Application/userApplication');
 const { check, validationResult } = require('express-validator');
 
@@ -14,8 +15,8 @@ router.post('/register',[
     await CreateUser(req, res);    
 });
 
-router.post('/login', async (req, res) => {
-    await LoginUser(req, res); 
+router.post('/login', async (req, res, next) => {
+    await LoginUser(req, res);   
 })
 
 router.get('/get-user', [
@@ -24,7 +25,7 @@ router.get('/get-user', [
     if(req.session.email){
         await GetUser(req, res); 
      }else{
-        res.redirect('/account/login');
+        res.status(401).json({ error: 'Sesion terminada' })
      }
 })
 
@@ -36,18 +37,13 @@ router.put('/edit-user', [
     if(req.session.email){
         await EditUser(req, res); 
      }else{
-        res.redirect('/account/login');
+        res.status(401).json({ error: 'Sesion terminada' })
      }
 })
 
 router.post('/logout',async (req, res) => {
-    if(req.session.email){
-        req.session.nombre = null;
-        res.redirect('/account/login');
-        await GetUser(req, res); 
-     }else{
-        res.redirect('/account/profile');
-     }
+    req.session.email = null;
+    res.status(200).json({ success: "Sesion terminada" })
 })
 
 module.exports = router;
