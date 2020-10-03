@@ -9,26 +9,42 @@ router.post('/create-service',[
     check('description', 'La descripcion del servicio es obligatoria').not().isEmpty(),
     check('typeService', 'Debe terner un tipo de servicio').not().isEmpty()
 ], async (req, res) => {
-    const errors = validationResult(req);
-    if(!errors.isEmpty()){ return res.status(422).json({errores: errors.array()}) }
-    await CreateService(req, res);    
+    if(req.session.email){
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){ return res.status(422).json({errores: errors.array()}) }
+        await CreateService(req, res);  
+     }else{
+        res.redirect('/account/login');
+     }
 });
 
 router.get('/get-services', [],async (req, res) => {
-    await GetService(req, res); 
+    if(req.session.email){
+        await GetService(req, res); 
+     }else{
+        res.redirect('/account/login');
+     }
 })
 
 router.put('/edit-service', [
     check('description', 'La descripcion es obligatoria').not().isEmpty(),
     check('typeService', 'El tipo de servicio es obligatorio').not().isEmpty(),
 ], async (req, res) => {
-    await EditService(req, res); 
+    if(req.session.email){
+        await EditService(req, res);  
+     }else{
+        res.redirect('/account/login');
+     }
 })
 
 router.delete('/delete-service', [
     check('idService', 'Debe enviar el id del servicio para poder eliminarlo').not().isEmpty(),
 ], async (req, res) => {
-    await DeleteService(req, res); 
+    if(req.session.email){
+        await DeleteService(req, res);
+     }else{
+        res.redirect('/account/login');
+     } 
 })
 
 module.exports = router;

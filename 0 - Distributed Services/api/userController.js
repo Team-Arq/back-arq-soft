@@ -21,7 +21,11 @@ router.post('/login', async (req, res) => {
 router.get('/get-user', [
     check('email', 'El email es obligatorio').not().isEmpty()
 ],async (req, res) => {
-    await GetUser(req, res); 
+    if(req.session.email){
+        await GetUser(req, res); 
+     }else{
+        res.redirect('/account/login');
+     }
 })
 
 router.put('/edit-user', [
@@ -29,7 +33,21 @@ router.put('/edit-user', [
     check('password', 'El password es obligatorio').not().isEmpty(),
     check('email', 'El email es obligatorio').not().isEmpty()
 ], async (req, res) => {
-    await EditUser(req, res); 
+    if(req.session.email){
+        await EditUser(req, res); 
+     }else{
+        res.redirect('/account/login');
+     }
+})
+
+router.get('/logout',async (req, res) => {
+    if(req.session.email){
+        req.session.nombre = null;
+        res.redirect('/account/login');
+        await GetUser(req, res); 
+     }else{
+        res.redirect('/account/profile');
+     }
 })
 
 module.exports = router;
