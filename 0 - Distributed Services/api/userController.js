@@ -40,7 +40,7 @@ router.put('/edit-user', [
      }
 })
 
-router.get('/logout',async (req, res) => {
+router.post('/logout',async (req, res) => {
     if(req.session.email){
         req.session.nombre = null;
         res.redirect('/account/login');
