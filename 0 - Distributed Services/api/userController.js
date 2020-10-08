@@ -22,11 +22,11 @@ router.post('/login', async (req, res, next) => {
 router.get('/get-user', [
     check('email', 'El email es obligatorio').not().isEmpty()
 ],async (req, res) => {
-    if(req.session.email){
+    // if(req.session.email){
         await GetUser(req, res); 
-     }else{
-        res.status(401).json({ error: 'Sesion terminada' })
-     }
+    //  }else{
+    //     res.status(401).json({ error: 'Sesion terminada' })
+    //  }
 })
 
 router.put('/edit-user', [
@@ -34,11 +34,11 @@ router.put('/edit-user', [
     check('password', 'El password es obligatorio').not().isEmpty(),
     check('email', 'El email es obligatorio').not().isEmpty()
 ], async (req, res) => {
-    if(req.session.email){
+    //if(req.session.email){
         await EditUser(req, res); 
-     }else{
-        res.status(401).json({ error: 'Sesion terminada' })
-     }
+    //  }else{
+    //     res.status(401).json({ error: 'Sesion terminada' })
+    //  }
 })
 
 router.post('/logout',async (req, res) => {
