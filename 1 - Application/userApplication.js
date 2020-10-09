@@ -72,6 +72,7 @@ async function EditUser(req, res) {
 const createToken = (user) => {
     const payload = {
         usuarioId: user.id,
+        usuarioEmail: user.email,
         createdAt: moment().unix(),
         expiredAt: moment().add(1440, 'minutes').unix()
     }
