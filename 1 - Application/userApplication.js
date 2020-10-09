@@ -35,7 +35,7 @@ async function LoginUser(req, res) {
 
 async function GetUser(req, res) {
 
-    const user = await User.findOne({ where: { email: req.body.email } });
+    const user = await User.findOne({ where: { email: req.query.email } });
     if (user) {
         res.status(200).json({ success: user })
     }
