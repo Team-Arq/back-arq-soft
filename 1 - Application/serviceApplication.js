@@ -46,13 +46,13 @@ async function EditService(req, res) {
 
 async function DeleteService(req, res) {
 
-    const service = await Service.findOne({ where: { idService: req.body.idService } });
+    const service = await Service.findOne({ where: { id: req.query.idService } });
 
     if (service) {
 
         service.destroy({
             where: {
-                idService: req.body.idService
+                id: req.query.idService
             }
 
         }).then(() => { res.json({ success: 'Se elimino correctamente el servicio' }); }
