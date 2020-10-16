@@ -53,7 +53,7 @@ async function EditUser(req, res) {
         User.update(
             // Values to update
             {
-                username:  req.body.username,
+                name:  req.body.name,
                 password: req.body.password
             },
             { // Clause
