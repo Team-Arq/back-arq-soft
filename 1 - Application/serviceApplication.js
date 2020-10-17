@@ -22,19 +22,21 @@ async function GetService(req, res) {
 
 async function EditService(req, res) {
 
-    const service = await Service.findOne({ where: { idService: req.body.idService } });
+    const service = await Service.findOne({ where: { id: req.body.id} });
 
     if (service) {
         Service.update(
  
             {
+                name: req.body.name,
+                typeService: req.body.type,
                 description: req.body.description,
-                type: req.body.type
+                price: req.body.price
             },
             { 
                 where:
                 {
-                    idService: req.body.idService
+                    id: req.body.id
                 }
             }
         ).then(() => { res.json({ success: req.body }); }

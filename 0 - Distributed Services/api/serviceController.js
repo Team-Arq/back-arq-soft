@@ -27,8 +27,10 @@ router.get('/get-services', [],async (req, res) => {
 })
 
 router.put('/edit-service', [
+    check('name', 'El nombre es obligatorio').not().isEmpty(),
     check('description', 'La descripcion es obligatoria').not().isEmpty(),
-    check('typeService', 'El tipo de servicio es obligatorio').not().isEmpty(),
+    check('type', 'El tipo de servicio es obligatorio').not().isEmpty(),
+    check('price', 'El precio  del servicio es obligatorio').not().isEmpty(),
 ], async (req, res) => {
     // if(req.session.email){
         await EditService(req, res);  
