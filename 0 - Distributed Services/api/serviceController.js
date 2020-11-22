@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { CreateService, GetService, EditService, DeleteService } = require('../../1 - Application/serviceApplication')
+const { CreateService, GetService, EditService, DeleteService ,GetOneService} = require('../../1 - Application/serviceApplication')
 const { check, validationResult } = require('express-validator');
 
 
@@ -47,6 +47,10 @@ router.delete('/delete-service', [
     //  }else{
     //     res.status(401).json({ error: 'Sesion terminada' })
     //  } 
+})
+
+router.get('/get-service', [],async (req, res) => {
+        await GetOneService(req, res); 
 })
 
 module.exports = router;

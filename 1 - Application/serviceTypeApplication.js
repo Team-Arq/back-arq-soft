@@ -20,6 +20,7 @@ async function GetTypeService(req, res) {
     }
 }
 
+
 async function EditTypeService(req, res) {
 
     const typeService = await ServiceType.findOne({ where: { idTypeService: req.body.idTypeService } });
