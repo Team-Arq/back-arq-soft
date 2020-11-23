@@ -64,9 +64,8 @@ async function DeleteService(req, res) {
         res.json({ error: 'El servicio no existe' })
     }
 }
-async function GetOneService(req, res) {
-
-    const services = await Service.findAll({ where: { typeService: req.query.typeService } });
+async function getAlltypeservice(req, res) {
+    const services = await Service.findAll({ where: { name: req.body.name } });
     if (services) {
         res.json({ success: services })
     }
@@ -75,4 +74,4 @@ async function GetOneService(req, res) {
     }
 }
 
-module.exports = { CreateService, GetService, EditService, DeleteService , GetOneService };
+module.exports = { CreateService, GetService, EditService, DeleteService , getAlltypeservice };

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { CreateService, GetService, EditService, DeleteService ,GetOneService} = require('../../1 - Application/serviceApplication')
+const { CreateService, GetService, EditService, DeleteService ,getAlltypeservice} = require('../../1 - Application/serviceApplication')
 const { check, validationResult } = require('express-validator');
 
 
@@ -50,7 +50,7 @@ router.delete('/delete-service', [
 })
 
 router.get('/get-service', [],async (req, res) => {
-        await GetOneService(req, res); 
+        await getAlltypeservice(req, res); 
 })
 
 module.exports = router;
