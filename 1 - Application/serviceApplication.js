@@ -66,7 +66,7 @@ async function DeleteService(req, res) {
 }
 async function GetOneService(req, res) {
 
-    const services = await Service.findOne({ where: { typeService: req.query.typeService } });
+    const services = await Service.findAll({ where: { typeService: req.query.typeService } });
     if (services) {
         res.json({ success: services })
     }

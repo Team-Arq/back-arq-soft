@@ -6,7 +6,7 @@ async function createPayment(req, res) {
 }
 async function GetAllPayment(req, res) {
 
-    const payment = await Payment.findAll();
+    const payment = await Payment.findAll({where:{id_user:req.body.iduser}});
     if (payment) {
         res.json({ success: payment })
     }
