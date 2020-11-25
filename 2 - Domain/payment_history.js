@@ -8,7 +8,7 @@ module.exports = (sequelize, type) => {
       description: type.STRING,
       price: type.STRING,
       id_user: type.INTEGER,
-      id_service: type.INTEGER
+      id_service: type.INTEGER,
     });
   };
   

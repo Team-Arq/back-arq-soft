@@ -1,12 +1,12 @@
 const { Payment } = require('../3 - Infrastructure/db');
 
 async function createPayment(req, res) {
-    const typeService = await ServiceType.create(req.body);
-    res.json(typeService);
+    const payment = await Payment.create(req.body);
+    res.json(payment);
 }
 async function GetAllPayment(req, res) {
 
-    const payment = await Payment.findAll({where:{id_user:req.body.iduser}});
+    const payment = await Payment.findAll({where:{id_user:req.query.iduser}});
     if (payment) {
         res.json({ success: payment })
     }
