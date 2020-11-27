@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const jwt = require('jwt-simple');
-
+const { Op } = require("sequelize");
 const { Service } = require('../3 - Infrastructure/db');
 
 async function CreateService(req, res) {
