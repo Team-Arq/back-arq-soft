@@ -6,7 +6,7 @@ const ServiceModel= require('../2 - Domain/service');
 const ServiceTypeModel= require('../2 - Domain/serviceType');
 const PaymentModel= require('../2 - Domain/payment_history');
 
-const sequelize = new Sequelize('OPBgkKxGJI', 'OPBgkKxGJI', 'FpB7NOnR2p', {
+const sequelize = new Sequelize('IA3enEeEY3', 'IA3enEeEY3', 'CQMgCR6Bst', {
     host: 'remotemysql.com',
     dialect: 'mysql'
 });
